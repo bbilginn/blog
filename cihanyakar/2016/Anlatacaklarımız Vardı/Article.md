@@ -1,6 +1,6 @@
 Merhaba,
 
-Teknolot etkinliğimizi yaptık. Adını da _"Anlatacaklarımız var"_ koyduk...
+Teknolot etkinliğimizi yaptık. Adını da _"Anlatacaklarımız var"_ koyduk!!!  ...
 
 
 
