@@ -1,3 +1,9 @@
+---
+Title: Kırklareli Üniversitesi TechDay 2
+PublishDate: 13/05/2017
+IsActive: True
+Tags: C#, Xamarin
+---
 Merhaba,
 
 Kırklareli Üniversitesi’nde düzenlenen TechDay 2 etkinliğine davetliydik. Sadece Kırklareli Üniversitesi öğrencileri değil, diğer Üniversiteler’den de katılımın olması bizleri çok mutlu etti.
