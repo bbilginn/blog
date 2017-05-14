@@ -2,14 +2,15 @@
 Title: Kırklareli Üniversitesi TechDay 2
 PublishDate: 13/05/2017
 IsActive: True
-Tags: C#, Xamarin
+Tags: C#, Xamarin, Etkinlik
 ---
 Merhaba,
 
-Kırklareli Üniversitesi’nde düzenlenen TechDay 2 etkinliğine davetliydik. Sadece Kırklareli Üniversitesi öğrencileri değil, diğer Üniversiteler’den de katılımın olması bizleri çok mutlu etti.
+Kırklareli Üniversitesi’nde düzenlenen TechDay 2 etkinliğine davetliydik.  Etkinlik hem yazılım geliştirme hem de devops üzerine olduğu için ben de dinleyici olarak bir çok yeni bilgi edindim. 
 
-Bol bol Xamarin ve uygulama geliştirme detaylarından konuştuk.
+Etkinlikte benim konum "Visual Studio kullanarak Takım Çalışması" oldu. Konuya yazılım sektöründe proje yöntemi yöntemlerini anlatarak başladım. Peşinden kaynak kod yönetimi ve Visual Studio geldi.
 
 
 
-![https://ozaksut.com/wp-content/uploads/2017/03/xd-800x405.jpg](https://ozaksut.com/wp-content/uploads/2017/03/xd-800x405.jpg)
+![afis](afis.PNG)
+
