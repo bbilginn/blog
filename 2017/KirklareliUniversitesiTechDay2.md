@@ -1,6 +1,6 @@
 ---
 Title: Kırklareli Üniversitesi TechDay 2
-PublishDate: 13/05/2017
+PublishDate: 15/03/2017
 IsActive: True
 Tags: C#, Xamarin, Etkinlik
 ---

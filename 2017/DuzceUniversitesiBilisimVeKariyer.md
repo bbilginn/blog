@@ -10,4 +10,4 @@ Düzce'de Xamarin'i bu sefer ben anlattım. Bir yönetim bilişim sistemleri mez
 
 
 
-![duzce.jpg](duzce.jpg)
+![duzce.JPG](duzce.JPG)
