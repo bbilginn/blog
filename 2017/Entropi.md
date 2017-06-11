@@ -8,11 +8,11 @@ Entropi deyince ilk akla gelen her ne kadar termodinomi olsa da veriyi anlama ve
 
 Önce basitlerle başlayalım. Elimizde bazı renkler olsun, `"yeşil, kırmızı, mavi, sarı, siyah"` bu renkleri en az _bit_kullanarak nasıl ifade edebiliriz? Bir _bit_  1 ve 0 olmak üzere iki farklı değer alabildiğini biliyoruz. Elimizdeki elemanlar 2’den fazla olduğu için tek bir _bit_ yeterli olmayacaktır. Elimizde 2 bit olursa bu durumda `00,01,10,11` olmak üzere 4 farklı değer elde edebiliriz. _Bit_ sayısını bir arttırdığımızda ise `“000,001, 010, 011, 100, 101, 110, 111”` şeklinde 8 farklı değer oluşturabiliriz. Fark ettiğiniz üzere 2,4,8 şeklinde sırayla 2’nin kuvvetleri olarak ilerleme var. Bu durumda kuvvet almanın tersi olan logaritma kullanarak gerekli _bit_ sayısını bulabiliriz. Örneğimiz için `log(5,2)` hesabını yaptığımızda `~2.32` elde ederiz. _Bit_’i daha küçük parçalara bölemeyeceğimiz için bu sayıyı yukarıya yuvarladığımızda 3 tam sayısını elde ederiz. Bu işlemi C# ile bir method haline getirmek istersek:
 
-```
-public static intGerekliBitSayisi<T>( ISet<T> dizi)
-{                                                                                            
-    return(int)Math.Ceiling(Math.Log(dizi.Count, 2));
-}
+```csharp
+    public static intGerekliBitSayisi<T>( ISet<T> dizi)
+   {
+	    return(int)Math.Ceiling(Math.Log(dizi.Count, 2));
+    }
 ```
 
 
@@ -121,6 +121,6 @@ Burada her iki dizi de rasgele dağılmış gibi gözükmektedir.Ama en çok han
 
 Bunu hesaplamak için bir önceki formülümüze geri dönüyoruz. Burada bu formüle sadık kalarak yapabileceğimiz birkaç şey var.Birincisi sadece logaritma tabanını 2 yerine farklı eleman sayısı olarak değiştirmek. Bu durumda 0 ile 1 arasında bir değer alırsınız. Bu yöntemde xiçin 0,96 y için 0.78 değerleri çıkacaktır. Diğeri ise yine logaritma 2 tabanında alınmakta fakat sonuç eleman sayısına bölünerek normalize edilmektedir. Bu durumda değerlerimiz 0.10 ve 0.09 olacaklardır. Son olarak `entropi / log(eleman sayisi, entropde kullanılan log tabanı)` kullanılarak ilk yöntemle aynı sonuç elde edilebilir.
 
-Bunlardan çok daha karmaşık entropy hesapları olmakla birlikte, veriyi analiz ederken ve basit sıkıştırma çözümlerinde bu algoritma çoğunlukla yeterli olmaktadır. Pratik kullanımları ise sahtekarlık yakalamak, parola güvenliği ölçmek gibi farklı kullanmıları olmaktadır.
+Bunlardan çok daha karmaşık entropy hesapları olmakla birlikte, veriyi analiz ederken ve basit sıkıştırma çözümlerinde bu algoritma çoğunlukla yeterli olmaktadır. Pratik kullanımları ise sahtekarlık yakalamak, parola güvenliği ölçmek gibi farklı kullanımları olmaktadır.
 
  
