@@ -42,7 +42,7 @@ Peki aynı elemanlar tekrarlı şekilde koleksiyon içerisinde bulunsalardı bu 
 
 
 
-Bu dizide 8 farklı eleman olduğu için ilk fonksiyonumuzuçalıştırdığımızda eleman başına gereken en az bit sayısı 3 olarak karşımıza çıkacaktır. Gerçekten de `000 = yeşil, 001 = kırmızı` gibi tek tek eşleştirme yaparsam sonuç böyle çıkacaktır.
+Bu dizide 8 farklı eleman olduğu için ilk fonksiyonumuzu çalıştırdığımızda eleman başına gereken en az bit sayısı 3 olarak karşımıza çıkacaktır. Gerçekten de `000 = yeşil, 001 = kırmızı` gibi tek tek eşleştirme yaparsam sonuç böyle çıkacaktır.
 
 Fakat koleksiyonun dağılımına baktığımızda `“yeşil”` elemanının 13 defa tekrarlandığı görülmektedir. Bu durumda, ben yeşil yerine tek _bit_’lik bir ifade ile 0 desem, herhangi rasgele bir renge 111 desem ve diğer kalan renklere 10 ve 11 ile başlayacak ama 111 ile başlamayacak şekilde eşleştirme yapsam aşağıdaki gibi bir eşleştirme tablosu çıkacaktır:
 
@@ -60,7 +60,7 @@ Fakat koleksiyonun dağılımına baktığımızda `“yeşil”` elemanının 1
 
 
 
-Bu durumda eleman başına 3.5bit’lik bir harcama yapmış olurum fakat ilk durumda toplam boyut `3 * 20 = 60 bit` ilen ikinci durumda `(13 *1) +(1 * 3) + (6 * 4) = 40 bit` yer kaplayacaktır. Bu durumda aslında elaman başına `40 / 20 = 2 bit` yeterli olmuştur. Bu da kayıpsız veri sıkıştırmanın ilk adımlarındandır. Bu eşleştirme işlemini _Shannon-Fano_ algoritması ile siz de yapabilirsiniz. Bu algoritmanın bazı sıkıntılarının giderilmesi ile `Huffman`   algoritması geliştirilmiştir.
+Bu durumda eleman başına 3.5bit’lik bir harcama yapmış olurum fakat ilk durumda toplam boyut `3 * 20 = 60 bit` ilen ikinci durumda `(13 *1) +(1 * 3) + (6 * 4) = 40 bit` yer kaplayacaktır. Bu durumda aslında eleman başına `40 / 20 = 2 bit` yeterli olmuştur. Bu da kayıpsız veri sıkıştırmanın ilk adımlarındandır. Bu eşleştirme işlemini _Shannon-Fano_ algoritması ile siz de yapabilirsiniz. Bu algoritmanın bazı sıkıntılarının giderilmesi ile `Huffman`   algoritması geliştirilmiştir.
 
 Peki bu 2 değerini bilmenin bir yolu var mıdır? Bunun için gereken formül _Shannon_'ın entropi formülü olacaktır:
 
