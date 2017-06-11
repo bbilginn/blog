@@ -15,6 +15,8 @@ public static intGerekliBitSayisi<T>( ISet<T> dizi)
 }
 ```
 
+
+
 Bu methodu kullanmak istersek, kodumuz aşağıdaki gibi olacaktır:
 
 ```csharp
@@ -25,6 +27,8 @@ void Main()
 }
 ```
 
+
+
 Fonksiyonda `ISet` arayüzünü kullanmamın amacı koleksiyon içerisindeki tüm elemanların tekrarsız olmasını garanti etmek içindir. .net içerisinde ISet uygulanmış koleksiyonlar aynı değeri birden fazla içeremezler -eğer rasgele sayılar ile tekrarsız sonuçlar üretmek istiyorsanız _Hashset_ gibi `ISet` uygulanmış koleksiyon tiplerini tercih etmeniz hem daha performanslı hem de daha kısa kod yazmanızı sağlayacaktır. 
 
 Peki aynı elemanlar tekrarlı şekilde koleksiyon içerisinde bulunsalardı bu benim sonucumu etkiler miydi? İlk bakışta etkilememesi gerekiyor gibi gözükür çünkü  `“kırımızı = 001”` gibi eşleştirme yapmış olsaydım,kırmızı ile tekrar karşılaştığımda `001` yazar geçerdim. Öyleyse şöyle bir diziyidüşünelim:
@@ -33,6 +37,8 @@ Peki aynı elemanlar tekrarlı şekilde koleksiyon içerisinde bulunsalardı bu 
               var a =new[] { "kırmızı" ,"mavi","sarı", "mor", "siyah", "gri" ,"beyaz","yeşil","yeşil", "yeşil", "yeşil", "yeşil",
 "yeşil", "yeşil" , "yeşil", "yeşil", "yeşil", "yeşil", "yeşil", "yeşil"};
 ```
+
+
 
 Bu dizide 8 farklı eleman olduğu için ilk fonksiyonumuzuçalıştırdığımızda eleman başına gereken en az bit sayısı 3 olarak karşımıza çıkacaktır. Gerçekten de `000 = yeşil, 001 = kırmızı` gibi tek tek eşleştirme yaparsam sonuç böyle çıkacaktır.
 
@@ -48,6 +54,7 @@ Fakat koleksiyonun dağılımına baktığımızda `“yeşil”` elemanının 1
   Siyah		=	1100
   Gri		=	1101
 ```
+
 
 
 Bu durumda eleman başına 3.5bit’lik bir harcama yapmış olurum fakat ilk durumda toplam boyut `3 * 20 = 60 bit` ilen ikinci durumda `(13 *1) +(1 * 3) + (6 * 4) = 40 bit` yer kaplayacaktır. Bu durumda aslında elaman başına `40 / 20 = 2 bit` yeterli olmuştur. Bu da kayıpsız veri sıkıştırmanın ilk adımlarındandır. Bu eşleştirme işlemini _Shannon-Fano_ algoritması ile siz de yapabilirsiniz. Bu algoritmanın bazı sıkıntılarının giderilmesi ile `Huffman`   algoritması geliştirilmiştir.
@@ -92,6 +99,8 @@ Bunu hesaplamak için C# kullanacak olursak kodumuz aşağıdaki gibi olacaktır
  }
 ```
 
+
+
 Bu fonksiyonu örnek koleksiyonumuz için çalıştıracak olursak bize `~1.98bit` sonucunu verecektir. Pratik kullanımda bir _bit_ parçalanamayacağı için yukarı yuvarladığımızda  ulaşacağımız sonuç  `2bit` olacaktır. Bu da bir dizinin her bir elemanını kodlamak için gereken optimal bit miktarını verecektir. Örneğin, bir metin dosyasında a harfi çok geçerken ğ harfi çok daha az geçebilir. Bu durumda a için daha az bit kullanılması dosyanın sıkıştırılabilmesine neden olmaktadır. Benzer şekilde metin kelimelerine ayrılıp numaralandırılırsa çok daha yüksek sıkıştırma oranları elde edilebilir. Logaritma değeri olarak istenilen bir değer verilebilmektedir. Sık olarak 2 değeri verilmekle birlikte, doğal logaritma ile hesaplandığı da görülmektedir.
 
 Peki, bir koleksiyon ile başka bir koleksiyonu düzensizliklerine göre karşılaştırmak istersem. Örneğin, X ve Y müşterilerini harcama yaptıkları farklı mağazalara göre düzensizliklerini merak edebilirim. Mağazaları 1,2,3,4… olarak tam sayılar olarak gösterelim -ki reklam olmasın- ve harcama dağılımları aşağıda gösterildiği şekilde olsun:
@@ -100,6 +109,8 @@ Peki, bir koleksiyon ile başka bir koleksiyonu düzensizliklerine göre karşı
 var x =new[] { 1, 1, 4, 2, 5, 1, 1, 1, 1, 3, 5, 2, 7, 2, 5, 9, 9, 7, 4, 3, 4, 1, 3, 5, 7, 3 };
 var y =new[] { 1, 2, 4, 1, 1, 2, 1, 2, 2, 5, 2, 2, 4, 7, 3, 1, 2, 7, 2, 8, 2, 2, 9, 2,1 };      
  ```
+
+
 
 Burada her iki dizi de rasgele dağılmış gibi gözükmektedir.Ama en çok hangisi rasgele dağılıma sahiptir? Öncelikle bu iki durumu karşılaştırmak için ne kullanacağız? Amacımız en yüksek ihtimale 1 en düşük ihtimale 0 vermek olsun. Bu durumda eleman sayısı kadar farklı değere sahip olan bir koleksiyon 1 değerini alırken tüm elemanları aynı olan bir koleksiyon 0 değerini alacaktır. 
 
