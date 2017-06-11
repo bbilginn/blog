@@ -8,12 +8,11 @@ Entropi deyince ilk akla gelen her ne kadar termodinomi olsa da veriyi anlama ve
 
 Önce basitlerle başlayalım. Elimizde bazı renkler olsun, `"yeşil, kırmızı, mavi, sarı, siyah"` bu renkleri en az _bit_kullanarak nasıl ifade edebiliriz? Bir _bit_  1 ve 0 olmak üzere iki farklı değer alabildiğini biliyoruz. Elimizdeki elemanlar 2’den fazla olduğu için tek bir _bit_ yeterli olmayacaktır. Elimizde 2 bit olursa bu durumda `00,01,10,11` olmak üzere 4 farklı değer elde edebiliriz. _Bit_ sayısını bir arttırdığımızda ise `“000,001, 010, 011, 100, 101, 110, 111”` şeklinde 8 farklı değer oluşturabiliriz. Fark ettiğiniz üzere 2,4,8 şeklinde sırayla 2’nin kuvvetleri olarak ilerleme var. Bu durumda kuvvet almanın tersi olan logaritma kullanarak gerekli _bit_ sayısını bulabiliriz. Örneğimiz için `log(5,2)` hesabını yaptığımızda `~2.32` elde ederiz. _Bit_’i daha küçük parçalara bölemeyeceğimiz için bu sayıyı yukarıya yuvarladığımızda 3 tam sayısını elde ederiz. Bu işlemi C# ile bir method haline getirmek istersek:
 
-```csharp
+```
 public static intGerekliBitSayisi<T>( ISet<T> dizi)
 {                                                                                            
     return(int)Math.Ceiling(Math.Log(dizi.Count, 2));
 }
-
 ```
 
 
@@ -114,7 +113,7 @@ Peki, bir koleksiyon ile başka bir koleksiyonu düzensizliklerine göre karşı
 var x =new[] { 1, 1, 4, 2, 5, 1, 1, 1, 1, 3, 5, 2, 7, 2, 5, 9, 9, 7, 4, 3, 4, 1, 3, 5, 7, 3 };
 var y =new[] { 1, 2, 4, 1, 1, 2, 1, 2, 2, 5, 2, 2, 4, 7, 3, 1, 2, 7, 2, 8, 2, 2, 9, 2,1 };
 
-```
+ ```
 
 
 
