@@ -13,6 +13,7 @@ public static intGerekliBitSayisi<T>( ISet<T> dizi)
 {                                                                                            
     return(int)Math.Ceiling(Math.Log(dizi.Count, 2));
 }
+
 ```
 
 
@@ -25,6 +26,7 @@ void Main()
 	var ornek = new[] { "yeşil", "kırmızı", "mavi","sarı", "siyah" };
 	var sonuc = GerekliBitSayisi(newSystem.Collections.Generic.HashSet<string>(ornek));
 }
+
 ```
 
 
@@ -36,6 +38,7 @@ Peki aynı elemanlar tekrarlı şekilde koleksiyon içerisinde bulunsalardı bu 
 ```csharp
               var a =new[] { "kırmızı" ,"mavi","sarı", "mor", "siyah", "gri" ,"beyaz","yeşil","yeşil", "yeşil", "yeşil", "yeşil",
 "yeşil", "yeşil" , "yeşil", "yeşil", "yeşil", "yeşil", "yeşil", "yeşil"};
+
 ```
 
 
@@ -53,6 +56,7 @@ Fakat koleksiyonun dağılımına baktığımızda `“yeşil”` elemanının 1
   Mor		=	1011
   Siyah		=	1100
   Gri		=	1101
+  
 ```
 
 
@@ -97,6 +101,7 @@ Bunu hesaplamak için C# kullanacak olursak kodumuz aşağıdaki gibi olacaktır
      }
      return -sonuc;
  }
+ 
 ```
 
 
@@ -107,8 +112,9 @@ Peki, bir koleksiyon ile başka bir koleksiyonu düzensizliklerine göre karşı
 
  ```csharp
 var x =new[] { 1, 1, 4, 2, 5, 1, 1, 1, 1, 3, 5, 2, 7, 2, 5, 9, 9, 7, 4, 3, 4, 1, 3, 5, 7, 3 };
-var y =new[] { 1, 2, 4, 1, 1, 2, 1, 2, 2, 5, 2, 2, 4, 7, 3, 1, 2, 7, 2, 8, 2, 2, 9, 2,1 };      
- ```
+var y =new[] { 1, 2, 4, 1, 1, 2, 1, 2, 2, 5, 2, 2, 4, 7, 3, 1, 2, 7, 2, 8, 2, 2, 9, 2,1 };
+
+```
 
 
 
