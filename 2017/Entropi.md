@@ -66,7 +66,7 @@ Peki bu 2 değerini bilmenin bir yolu var mıdır? Bunun için gereken formül _
 
  $-\sum_{i=1}^n{P(x_i)log_2P(x_i)}$
 
-Bunu hesaplamak için C# kullanacak olursak kodumuz aşağıdaki gibi olacaktır:
+Formülde ki P ifadesi probability yani ilgili değerin olasılığını belirtiyor. Yani aslında yaptığımız ilk formüldeki hesabı her bir değerin gelme olasılığına göre ağırlıklandırmak.  Bunu hesaplamak için C# kullanacak olursak kodumuz aşağıdaki gibi olacaktır:
 
 ```csharp
  public static double Entropi<T>(IEnumerable<T> data)
@@ -109,11 +109,11 @@ Bu fonksiyonu örnek koleksiyonumuz için çalıştıracak olursak bize `~1.98bi
 
 Peki, bir koleksiyon ile başka bir koleksiyonu düzensizliklerine göre karşılaştırmak istersem. Örneğin, X ve Y müşterilerini harcama yaptıkları farklı mağazalara göre düzensizliklerini merak edebilirim. Mağazaları 1,2,3,4… olarak tam sayılar olarak gösterelim -ki reklam olmasın- ve harcama dağılımları aşağıda gösterildiği şekilde olsun:
 
- ```csharp
+```csharp
 var x =new[] { 1, 1, 4, 2, 5, 1, 1, 1, 1, 3, 5, 2, 7, 2, 5, 9, 9, 7, 4, 3, 4, 1, 3, 5, 7, 3 };
 var y =new[] { 1, 2, 4, 1, 1, 2, 1, 2, 2, 5, 2, 2, 4, 7, 3, 1, 2, 7, 2, 8, 2, 2, 9, 2,1 };
 
- ```
+```
 
 
 
