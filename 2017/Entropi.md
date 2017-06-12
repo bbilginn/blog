@@ -6,13 +6,13 @@ Tags: C#, Veri Madenciliği
 ---
 Entropi deyince ilk akla gelen her ne kadar termodinomi olsa da veriyi anlama ve veriyi sıkıştırma gibi konularda da oldukça önemli bir yere sahiptir.
 
-Önce basitlerle başlayalım. Elimizde bazı renkler olsun, `"yeşil, kırmızı, mavi, sarı, siyah"` bu renkleri en az _bit_kullanarak nasıl ifade edebiliriz? Bir _bit_  1 ve 0 olmak üzere iki farklı değer alabildiğini biliyoruz. Elimizdeki elemanlar 2’den fazla olduğu için tek bir _bit_ yeterli olmayacaktır. Elimizde 2 bit olursa bu durumda `00,01,10,11` olmak üzere 4 farklı değer elde edebiliriz. _Bit_ sayısını bir arttırdığımızda ise `“000,001, 010, 011, 100, 101, 110, 111”` şeklinde 8 farklı değer oluşturabiliriz. Fark ettiğiniz üzere 2,4,8 şeklinde sırayla 2’nin kuvvetleri olarak ilerleme var. Bu durumda kuvvet almanın tersi olan logaritma kullanarak gerekli _bit_ sayısını bulabiliriz. Örneğimiz için `log(5,2)` hesabını yaptığımızda `~2.32` elde ederiz. _Bit_’i daha küçük parçalara bölemeyeceğimiz için bu sayıyı yukarıya yuvarladığımızda 3 tam sayısını elde ederiz. Bu işlemi C# ile bir method haline getirmek istersek:
+Önce basitlerle başlayalım. Elimizde bazı renkler olsun, `"yeşil, kırmızı, mavi, sarı, siyah"` bu renkleri en az _bit_ kullanarak nasıl ifade edebiliriz? Bir _bit_  1 ve 0 olmak üzere iki farklı değer alabildiğini biliyoruz. Elimizdeki elemanlar 2’den fazla olduğu için tek bir _bit_ yeterli olmayacaktır. Elimizde 2 bit olursa bu durumda `00,01,10,11` olmak üzere 4 farklı değer elde edebiliriz. _Bit_ sayısını bir arttırdığımızda ise `“000,001, 010, 011, 100, 101, 110, 111”` şeklinde 8 farklı değer oluşturabiliriz. Fark ettiğiniz üzere 2,4,8 şeklinde sırayla 2’nin kuvvetleri olarak ilerleme var. Bu durumda kuvvet almanın tersi olan logaritma kullanarak gerekli _bit_ sayısını bulabiliriz. Örneğimiz için `log(5,2)` hesabını yaptığımızda `~2.32` elde ederiz. _Bit_’i daha küçük parçalara bölemeyeceğimiz için bu sayıyı yukarıya yuvarladığımızda 3 tam sayısını elde ederiz. Bu işlemi C# ile bir method haline getirmek istersek:
 
 ```csharp
-    public static intGerekliBitSayisi<T>( ISet<T> dizi)
-   {
-	    return(int)Math.Ceiling(Math.Log(dizi.Count, 2));
-    }
+public static intGerekliBitSayisi<T>( ISet<T> dizi)
+{
+  return (int)Math.Ceiling(Math.Log(dizi.Count, 2));
+}
 ```
 
 
@@ -23,9 +23,8 @@ Bu methodu kullanmak istersek, kodumuz aşağıdaki gibi olacaktır:
 void Main()
 {
 	var ornek = new[] { "yeşil", "kırmızı", "mavi","sarı", "siyah" };
-	var sonuc = GerekliBitSayisi(newSystem.Collections.Generic.HashSet<string>(ornek));
+	var sonuc = GerekliBitSayisi(new System.Collections.Generic.HashSet<string>(ornek));
 }
-
 ```
 
 
@@ -44,7 +43,7 @@ Peki aynı elemanlar tekrarlı şekilde koleksiyon içerisinde bulunsalardı bu 
 
 Bu dizide 8 farklı eleman olduğu için ilk fonksiyonumuzu çalıştırdığımızda eleman başına gereken en az bit sayısı 3 olarak karşımıza çıkacaktır. Gerçekten de `000 = yeşil, 001 = kırmızı` gibi tek tek eşleştirme yaparsam sonuç böyle çıkacaktır.
 
-Fakat koleksiyonun dağılımına baktığımızda `“yeşil”` elemanının 13 defa tekrarlandığı görülmektedir. Bu durumda, ben yeşil yerine tek _bit_’lik bir ifade ile 0 desem, herhangi rasgele bir renge 111 desem ve diğer kalan renklere 10 ve 11 ile başlayacak ama 111 ile başlamayacak şekilde eşleştirme yapsam aşağıdaki gibi bir eşleştirme tablosu çıkacaktır:
+Fakat koleksiyonun dağılımına baktığımızda `“yeşil”` elemanının 13 defa tekrarlandığı görülmektedir. Bu durumda, ben yeşil yerine tek _bit_’lik bir ifade ile 0 desem, herhangi rasgele bir renge 111 desem ve diğer kalan renklere 10 ve 11 ile başlayacak ama 111 ile başlamayacak şekilde eşleştirme yapsam (_amacım daha sonra bununla sıkıştırılmış bilgiyi açabilmek olduğundan aynı şekilde başlamamaları gerekiyor_) aşağıdaki gibi bir eşleştirme tablosu çıkacaktır:
 
 ```
   Yeşil		=	0
@@ -64,7 +63,7 @@ Bu durumda eleman başına 3.5bit’lik bir harcama yapmış olurum fakat ilk du
 
 Peki bu 2 değerini bilmenin bir yolu var mıdır? Bunun için gereken formül _Shannon_'ın entropi formülü olacaktır:
 
- $-\sum_{i=1}^n{P(x_i)log_2P(x_i)}$
+![latex1.png](latex1.png)
 
 Formülde ki P ifadesi probability yani ilgili değerin olasılığını belirtiyor. Yani aslında yaptığımız ilk formüldeki hesabı her bir değerin gelme olasılığına göre ağırlıklandırmak.  Bunu hesaplamak için C# kullanacak olursak kodumuz aşağıdaki gibi olacaktır:
 
